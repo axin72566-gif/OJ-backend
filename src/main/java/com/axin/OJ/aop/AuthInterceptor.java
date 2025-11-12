@@ -28,7 +28,7 @@ public class AuthInterceptor {
     private UserService userService;
 
     /**
-     * 执行拦截
+     * 有些方法需要管理员权限，看看你是不是管理员
      *
      * @param joinPoint 连接点
      * @param authCheck 权限校验注解

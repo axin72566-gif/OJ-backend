@@ -23,7 +23,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 public class LogInterceptor {
 
     /**
-     * 执行拦截
+     * 执行拦截，记录请求的日志
      */
     @Around("execution(* com.axin.OJ.controller.*.*(..))")
     public Object doInterceptor(ProceedingJoinPoint point) throws Throwable {
@@ -40,8 +40,7 @@ public class LogInterceptor {
         Object[] args = point.getArgs();
         String reqParam = "[" + StringUtils.join(args, ", ") + "]";
         // 输出请求日志
-        log.info("request start，id: {}, path: {}, ip: {}, params: {}", requestId, url,
-                httpServletRequest.getRemoteHost(), reqParam);
+        log.info("request start，id: {}, path: {}, ip: {}, params: {}", requestId, url, httpServletRequest.getRemoteHost(), reqParam);
         // 执行原方法
         Object result = point.proceed();
         // 输出响应日志
